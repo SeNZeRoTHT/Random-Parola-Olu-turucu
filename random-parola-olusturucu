@@ -1,0 +1,44 @@
+import random
+import string
+karakterler =  "$=/'!#@.,~+-/^"
+while True:
+    sayi = input("Parolanın içerisinde sayı olsun mu? [E/H]:")
+    if(sayi != "E" and sayi != "e" and sayi != "H" and sayi != "h"):
+        print("Lütfen E veya H harflerini kullanın.")
+        continue
+    elif(sayi == "H" or sayi == "h"):
+        print("Parolanızda sayı olmayacak.")
+    harf = input("Parolanın içerisinde harf olsun mu? [E/H]:")
+    if (harf != "E" and harf != "e" and harf != "H" and harf != "h"):
+        print("Lütfen E veya H harflerini kullanın.")
+        continue
+    elif (harf == "H" or harf == "h"):
+        print("Parolanızda harf olmayacak.")
+    ozel_karakter = input("Parolanın içerisinde özel karakter olsun mu? [E/H]:")
+    if (ozel_karakter != "E" and ozel_karakter != "e" and ozel_karakter != "H" and ozel_karakter != "h"):
+        print("Lütfen E veya H harflerini kullanın.")
+        continue
+    elif (ozel_karakter == "H" or ozel_karakter == "h"):
+        print("Parolanızda özel karakter olmayacak.")
+    minimum = int(input("Parola minimum kaç karakter olsun?"))
+    maksimum = int(input("Parola maksimum kaç karakter olsun?"))
+    break
+def parola_olusturucu(stringLenght = minimum):
+    if(sayi == "E" or sayi == "e"):
+        random_parola = string.digits
+    if (harf == "E" or harf == "e"):
+        random_parola = string.ascii_letters
+    if (ozel_karakter == "E" or ozel_karakter == "e"):
+        random_parola = karakterler
+    if (sayi == "E" or sayi == "e" and harf == "E" or harf == "e" and ozel_karakter == "H" or ozel_karakter == "h"):
+        random_parola = string.digits + string.ascii_letters
+    if (sayi == "E" or sayi == "e" and harf == "E" or harf == "e" and ozel_karakter == "E" or ozel_karakter == "e"):
+        random_parola = string.digits + string.ascii_letters + karakterler
+    if (sayi == "H" or sayi == "h" and harf == "H" or harf == "h" and ozel_karakter == "E" or ozel_karakter == "e"):
+        random_parola = karakterler
+    if (sayi == "H" or sayi == "h" and harf == "E" or harf == "e" and ozel_karakter == "E" or ozel_karakter == "e"):
+        random_parola = string.ascii_letters
+    if (sayi == "H" or sayi == "h" and harf == "E" or harf == "e" and ozel_karakter == "H" or ozel_karakter == "h"):
+        random_parola = string.ascii_letters + karakterler
+    return''.join(random.choice(random_parola) for i in range(stringLenght))
+print("Parolanız oluşturuldu:" , parola_olusturucu(minimum))
